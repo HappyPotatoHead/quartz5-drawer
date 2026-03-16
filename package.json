@@ -94,6 +94,7 @@
   },
   "dependencies": {
     "@quartz-community/types": "github:quartz-community/types",
+    "@quartz-community/utils": "github:quartz-community/utils",
     "remark-stringify": "^11.0.0"
   },
   "devDependencies": {

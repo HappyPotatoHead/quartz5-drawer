@@ -188,6 +188,51 @@ export default ((opts?: MyComponentOptions) => {
 }) satisfies QuartzComponentConstructor;
 ```
 
+### Receiving YAML Options in Component-Only Plugins
+
+Processing plugins (transformers, filters, emitters, page types) receive options automatically
+through their factory function. **Component-only plugins** (those with `"category": ["component"]`)
+are loaded via side-effect import and need an extra step to receive YAML options.
+
+Export an `init` function from your plugin's entry point. Quartz's config-loader will call it with
+the merged options from `package.json` `defaultOptions` and the user's `quartz.config.yaml`:
+
+```ts
+// src/index.ts
+export function init(options?: Record<string, unknown>): void {
+  // Use the options to configure your plugin
+  const myOption = (options?.myOption as boolean) ?? false;
+  // e.g. register a view, set global state, etc.
+}
+```
+
+Then declare default values in your `package.json` manifest:
+
+```json
+{
+  "quartz": {
+    "category": ["component"],
+    "defaultOptions": {
+      "myOption": false
+    }
+  }
+}
+```
+
+Users configure options in `quartz.config.yaml`:
+
+```yaml
+plugins:
+  - source: github:your-username/my-component-plugin
+    enabled: true
+    options:
+      myOption: true
+```
+
+Quartz merges `defaultOptions` with the user's `options` (user values take precedence) and passes
+the result to `init()`. If no `init` export exists, the plugin is loaded via side-effect import as
+before — no breaking change for existing plugins.
+
 ### Client-Side Scripts
 
 Component scripts run in the browser and must handle Quartz's SPA navigation. Key patterns:
