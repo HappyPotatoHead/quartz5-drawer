@@ -1,7 +1,6 @@
 import { createRequire } from 'module';
 import path2 from 'path';
 import fs from 'fs/promises';
-import { jsx } from 'preact/jsx-runtime';
 
 createRequire(import.meta.url);
 
@@ -160,8 +159,8 @@ function looksLikeANode(value) {
 }
 
 // node_modules/unist-util-visit-parents/lib/color.node.js
-function color(d) {
-  return "\x1B[33m" + d + "\x1B[39m";
+function color(d2) {
+  return "\x1B[33m" + d2 + "\x1B[39m";
 }
 
 // node_modules/unist-util-visit-parents/lib/index.js
@@ -1685,8 +1684,8 @@ var phrasing = (
 
 // node_modules/mdast-util-to-markdown/lib/handle/root.js
 function root(node2, _, state, info) {
-  const hasPhrasing = node2.children.some(function(d) {
-    return phrasing(d);
+  const hasPhrasing = node2.children.some(function(d2) {
+    return phrasing(d2);
   });
   const container = hasPhrasing ? state.containerPhrasing : state.containerFlow;
   return container.call(state, node2, info);
@@ -1812,8 +1811,8 @@ function enterTable(token) {
   this.enter(
     {
       type: "table",
-      align: align.map(function(d) {
-        return d === "none" ? null : d;
+      align: align.map(function(d2) {
+        return d2 === "none" ? null : d2;
       }),
       children: []
     },
@@ -2901,8 +2900,8 @@ var EditMap = class {
    * @returns {undefined}
    */
   consume(events) {
-    this.map.sort(function(a, b) {
-      return a[0] - b[0];
+    this.map.sort(function(a2, b) {
+      return a2[0] - b[0];
     });
     if (this.map.length === 0) {
       return;
@@ -3324,9 +3323,9 @@ function flushCell(map3, context, range, rowKind, rowEnd, previousCell) {
       start[1].type = "chunkText";
       start[1].contentType = "text";
       if (range[3] > range[2] + 1) {
-        const a = range[2] + 1;
+        const a2 = range[2] + 1;
         const b = range[3] - range[2] - 1;
-        map3.add(a, b, []);
+        map3.add(a2, b, []);
       }
     }
     map3.add(range[3] + 1, 0, [["exit", valueToken, context]]);
@@ -3731,7 +3730,7 @@ var ExampleEmitter = (userOptions) => {
   };
 };
 
-// src/util/lang.ts
+// node_modules/@quartz-community/utils/dist/lang.js
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -3741,13 +3740,34 @@ var example_default = ".example-component {\n  padding: 8px 16px;\n  background:
 
 // src/components/scripts/example.inline.ts
 var example_inline_default = 'function l(){let e=window.location.pathname;return e.startsWith("/")&&(e=e.slice(1)),e.endsWith("/")&&(e=e.slice(0,-1)),e||"index"}function r(){let e=document.querySelectorAll(".example-component");if(e.length===0)return;let t=[];function o(n){(n.ctrlKey||n.metaKey)&&n.shiftKey&&n.key.toLowerCase()==="e"&&(n.preventDefault(),console.log("[ExampleComponent] Keyboard shortcut triggered!"))}document.addEventListener("keydown",o),t.push(()=>document.removeEventListener("keydown",o));for(let n of e){let i=()=>{console.log("[ExampleComponent] Clicked!")};n.addEventListener("click",i),t.push(()=>n.removeEventListener("click",i))}typeof window<"u"&&window.addCleanup&&window.addCleanup(()=>{t.forEach(n=>n())}),console.log("[ExampleComponent] Initialized with",e.length,"component(s)")}document.addEventListener("nav",e=>{let t=e.detail?.url||l();console.log("[ExampleComponent] Navigation to:",t),r()});document.addEventListener("render",()=>{console.log("[ExampleComponent] Render event - re-initializing"),r()});document.addEventListener("prenav",()=>{let e=document.querySelector(".example-component");e&&sessionStorage.setItem("exampleScrollTop",e.scrollTop?.toString()||"0")});\n';
+var l;
+l = { __e: function(n2, l2, u3, t2) {
+  for (var i2, o2, r2; l2 = l2.__; ) if ((i2 = l2.__c) && !i2.__) try {
+    if ((o2 = i2.constructor) && null != o2.getDerivedStateFromError && (i2.setState(o2.getDerivedStateFromError(n2)), r2 = i2.__d), null != i2.componentDidCatch && (i2.componentDidCatch(n2, t2 || {}), r2 = i2.__d), r2) return i2.__E = i2;
+  } catch (l3) {
+    n2 = l3;
+  }
+  throw n2;
+} }, "function" == typeof Promise ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout;
+
+// node_modules/preact/jsx-runtime/dist/jsxRuntime.mjs
+var f2 = 0;
+function u2(e2, t2, n2, o2, i2, u3) {
+  t2 || (t2 = {});
+  var a2, c2, p2 = t2;
+  if ("ref" in p2) for (c2 in p2 = {}, t2) "ref" == c2 ? a2 = t2[c2] : p2[c2] = t2[c2];
+  var l2 = { type: e2, props: p2, key: n2, ref: a2, __k: null, __: null, __b: 0, __e: null, __c: null, constructor: void 0, __v: --f2, __i: -1, __u: 0, __source: i2, __self: u3 };
+  return l.vnode && l.vnode(l2), l2;
+}
+
+// src/components/ExampleComponent.tsx
 var ExampleComponent_default = ((opts) => {
   const { prefix = "", suffix = "", className = "example-component" } = opts ?? {};
   const Component = (props) => {
     const frontmatter = props.fileData?.frontmatter;
     const title = frontmatter?.title ?? "Untitled";
     const fullText = `${prefix}${title}${suffix}`;
-    return /* @__PURE__ */ jsx("div", { class: classNames(className), children: fullText });
+    return /* @__PURE__ */ u2("div", { class: classNames(className), children: fullText });
   };
   Component.css = example_default;
   Component.afterDOMLoaded = example_inline_default;
