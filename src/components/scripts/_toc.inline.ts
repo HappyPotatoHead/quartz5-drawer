@@ -88,6 +88,12 @@ function setupToc() {
       mobileBtn.removeEventListener("click", mobileClickHandler);
       closeTocSidebar(toc);
     });
+    const tocLinks = toc.querySelectorAll(".toc-content a");
+    tocLinks.forEach((link) => {
+      const linkHandler = () => closeTocSidebar(toc);
+      link.addEventListener("click", linkHandler);
+      window.addCleanup?.(() => link.removeEventListener("click", linkHandler));
+    });
   }
 
   const navHandler = () => {
