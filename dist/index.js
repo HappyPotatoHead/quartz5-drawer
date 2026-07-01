@@ -1,6 +1,9 @@
 import { createRequire } from 'module';
 
 createRequire(import.meta.url);
+
+// src/components/styles/mobileTOC.scss
+var mobileTOC_default = ".mobile-toc-button {\n  position: fixed;\n  top: 1rem;\n  right: 1rem;\n  z-index: 9999;\n  width: 42px;\n  height: 42px;\n}";
 var l;
 l = { __e: function(n2, l2, u3, t2) {
   for (var i2, o2, r2; l2 = l2.__; ) if ((i2 = l2.__c) && !i2.__) try {
@@ -23,16 +26,10 @@ function u2(e2, t2, n2, o2, i2, u3) {
 
 // src/components/MobileTOC.tsx
 var MobileTOC = () => {
-  return /* @__PURE__ */ u2("button", { class: "mobile-toc-button", children: "\u{1F4D1}" });
+  return /* @__PURE__ */ u2("button", { type: "button", class: "mobile-toc-button", "aria-label": "Open table of contents", children: "\u{1F4D1}" });
 };
 var MobileTOC_default = (() => {
-  MobileTOC.css = `
-.mobile-toc-button {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 9999;
-}`;
+  MobileTOC.css = mobileTOC_default;
   return MobileTOC;
 });
 

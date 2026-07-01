@@ -3,21 +3,17 @@ import type {
     QuartzComponentConstructor,
 } from "@quartz-community/types"
 
+import style from "./styles/mobileTOC.scss"
+
 const MobileTOC: QuartzComponent = () => {
     return (
-        <button class="mobile-toc-button">
+        <button type="button" class="mobile-toc-button" aria-label="Open table of contents">
             📑
         </button>
     )
 }
 
 export default (() => {
-    MobileTOC.css = `
-.mobile-toc-button {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 9999;
-}`
-        return MobileTOC
+    MobileTOC.css = style
+    return MobileTOC
 }) satisfies QuartzComponentConstructor
