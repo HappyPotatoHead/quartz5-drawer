@@ -1,1 +1,1 @@
-export { MobileTOC } from "./components" 
+export { MobileTOC } from "./components";
