@@ -89,5 +89,17 @@ function setupToc() {
   headers.forEach((header) => headingObserver.observe(header));
 }
 
+const explorerButtons = document.querySelectorAll(".explorer-toggle")
+explorerButtons.forEach((btn) => {
+  const handler = () => {
+    const isOpening = document.querySelector(".explorer")?.classList.contains("collapsed")
+    if (isOpening) {
+      document.querySelectorAll(".toc").forEach((toc) => closeTocSidebar(toc))
+    }
+  }
+  btn.addEventListener("click", handler)
+  window.addCleanup?.(() => btn.removeEventListener("click", handler))
+})
+
 document.addEventListener("nav", setupToc);
 document.addEventListener("render", setupToc);
