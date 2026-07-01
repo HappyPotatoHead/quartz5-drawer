@@ -111,8 +111,6 @@ button.mobile-toc {
 /* ── Mobile sidebar panel ──────────────────────────────────────────────── */
 
 @media all and (max-width: 800px) {
-  /* Push all other content right when TOC sidebar is open — mirrors
-     the Explorer's lock-scroll translateX trick but keyed to toc-lock-scroll */
   .page > #quartz-body.toc-lock-scroll > :not(.sidebar:has(.toc)) {
     transform: translateX(100dvw);
     transition: transform 300ms ease-in-out;
@@ -189,5 +187,9 @@ button.mobile-toc {
   /* Prevent body scroll when TOC panel is open */
   html.toc-mobile-no-scroll .toc .toc-content-wrapper {
     overscroll-behavior: contain;
+  }
+
+  .toc .fold {
+    display: none;
   }
 }
