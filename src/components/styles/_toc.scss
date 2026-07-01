@@ -113,3 +113,48 @@ button.mobile-toc {
     display: none;
   }
 }
+
+@media all and (min-width: 801px) {
+  .toc {
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    min-height: 1.4rem;
+    flex: 0 0.5 auto;
+
+    &:has(button.toc-header.collapsed) {
+      flex: 0 1 1.4rem;
+    }
+  }
+
+  button.toc-header {
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    padding: 0;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+
+    & h3 {
+      font-size: 1rem;
+      display: inline-block;
+      margin: 0;
+    }
+
+    & .fold {
+      margin-left: 0.5rem;
+      transition: transform 0.3s ease;
+      opacity: 0.8;
+    }
+
+    &.collapsed .fold {
+      transform: rotateZ(-90deg);
+    }
+  }
+
+  ul.toc-content.overflow {
+    max-height: calc(100% - 2rem);
+  }
+}
