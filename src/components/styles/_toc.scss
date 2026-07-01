@@ -1,0 +1,193 @@
+/* ── Desktop (unchanged from built-in TOC) ─────────────────────────────── */
+
+.toc {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  min-height: 1.4rem;
+  flex: 0 0.5 auto;
+
+  &:has(button.toc-header.collapsed) {
+    flex: 0 1 1.4rem;
+  }
+}
+
+button.toc-header {
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+
+  & h3 {
+    font-size: 1rem;
+    display: inline-block;
+    margin: 0;
+  }
+
+  & .fold {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+    opacity: 0.8;
+  }
+
+  &.collapsed .fold {
+    transform: rotateZ(-90deg);
+  }
+}
+
+ul.toc-content.overflow {
+  list-style: none;
+  position: relative;
+  margin: 0.5rem 0;
+  padding: 0;
+  max-height: calc(100% - 2rem);
+  overscroll-behavior: contain;
+
+  & > li > a {
+    color: var(--dark);
+    opacity: 0.35;
+    transition:
+      0.5s ease opacity,
+      0.3s ease color;
+
+    &.in-view {
+      opacity: 0.75;
+    }
+  }
+
+  @for $i from 0 through 6 {
+    & .depth-#{$i} {
+      padding-left: calc(1rem * #{$i});
+    }
+  }
+}
+
+/* ── Mobile toggle button ──────────────────────────────────────────────── */
+
+.toc button.mobile-toc {
+  display: none;
+}
+
+.toc button.desktop-toc {
+  display: flex;
+}
+
+@media all and (max-width: 800px) {
+  .toc button.mobile-toc {
+    display: flex;
+  }
+
+  .toc button.desktop-toc {
+    display: none;
+  }
+}
+
+button.mobile-toc {
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  padding: 5px;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  margin: 0;
+  z-index: 101;
+
+  &.hide-until-loaded {
+    display: none;
+  }
+
+  svg {
+    stroke: var(--darkgray);
+    pointer-events: none;
+  }
+}
+
+/* ── Mobile sidebar panel ──────────────────────────────────────────────── */
+
+@media all and (max-width: 800px) {
+  /* Push all other content right when TOC sidebar is open — mirrors
+     the Explorer's lock-scroll translateX trick but keyed to toc-lock-scroll */
+  .page > #quartz-body.toc-lock-scroll > :not(.sidebar:has(.toc)) {
+    transform: translateX(100dvw);
+    transition: transform 300ms ease-in-out;
+  }
+
+  .page > #quartz-body > :not(.sidebar:has(.toc)) {
+    transition: transform 300ms ease-in-out;
+  }
+
+  /* Sidebar container */
+  .page > #quartz-body .sidebar:has(.toc) {
+    box-sizing: border-box;
+    position: sticky;
+    background-color: var(--light);
+    padding: 1rem 0;
+    margin: 0;
+  }
+
+  .toc {
+    order: -1;
+    height: initial;
+    overflow: hidden;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  /* Collapsed state — panel off-screen */
+  .toc.collapsed > .toc-content-wrapper {
+    transform: translateX(-100vw);
+    visibility: hidden;
+  }
+
+  /* Open state — panel on-screen */
+  .toc:not(.collapsed) > .toc-content-wrapper {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  /* The sliding panel itself */
+  .toc .toc-content-wrapper {
+    box-sizing: border-box;
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 0;
+    background-color: var(--light);
+    max-width: 100vw;
+    width: 100vw;
+    transform: translateX(-100vw);
+    transition:
+      transform 200ms ease,
+      visibility 200ms ease;
+    overflow: hidden;
+    padding: 4rem 0 2rem 1rem;
+    height: 100dvh;
+    max-height: 100dvh;
+    visibility: hidden;
+  }
+
+  /* Override the desktop header button inside the panel */
+  .toc .toc-content-wrapper button.toc-header {
+    display: flex;
+    padding: 0 0 0.5rem 0;
+  }
+
+  .toc .toc-content-wrapper ul.toc-content.overflow {
+    max-height: calc(100dvh - 6rem);
+    overflow-y: auto;
+  }
+
+  /* Prevent body scroll when TOC panel is open */
+  html.toc-mobile-no-scroll .toc .toc-content-wrapper {
+    overscroll-behavior: contain;
+  }
+}
