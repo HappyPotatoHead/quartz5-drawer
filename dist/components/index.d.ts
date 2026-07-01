@@ -1,5 +1,8 @@
 import { QuartzComponent } from '@quartz-community/types';
 
-declare const _default: () => QuartzComponent;
+interface Options {
+    collapseByDefaults?: boolean;
+}
+declare const _default: (userOpts?: Options) => QuartzComponent;
 
-export { _default as _TableOfContents };
+export { type Options as O, _default as _TableOfContents };
