@@ -1,14 +1,14 @@
 {
-  "name": "@quartz-community/plugin-template",
+  "name": "quartz-plugin-drawer",
   "version": "0.1.0",
-  "description": "Template repository for Quartz community plugins.",
+  "description": "Quartz5 TOC drawer for mobile",
   "type": "module",
   "license": "MIT",
-  "author": "Quartz Community",
-  "homepage": "https://quartz.jzhao.xyz",
+  "author": "HappyPotatoHead",
+  "homepage": "https://github.com/HappyPotatoHead/quartz5-drawer",
   "repository": {
     "type": "git",
-    "url": "https://github.com/quartz-community/plugin-template"
+    "url": "https://github.com/HappyPotatoHead/quartz5-drawer"
   },
   "keywords": [
     "quartz",
@@ -46,9 +46,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "lint": "eslint . --max-warnings=0",
     "format": "prettier . --check",
-    "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "check": "npm run typecheck && npm run format"
   },
