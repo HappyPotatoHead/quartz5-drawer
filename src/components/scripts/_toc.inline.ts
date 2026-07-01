@@ -50,6 +50,21 @@ function setupToc() {
   const tocElements = Array.from(document.querySelectorAll(".toc"));
 
   for (const toc of tocElements) {
+    const desktopHeader = toc.querySelector("button.toc-header.desktop-toc");
+    if (desktopHeader) {
+      const desktopClickHandler = function () {
+        this.classList.toggle("collapsed");
+        this.setAttribute(
+          "aria-expanded",
+          this.getAttribute("aria-expanded") === "true" ? "false" : "true",
+        );
+        const content = this.nextElementSibling;
+        if (content) content.classList.toggle("collapsed");
+      };
+      desktopHeader.addEventListener("click", desktopClickHandler);
+      window.addCleanup?.(() => desktopHeader.removeEventListener("click", desktopClickHandler));
+    }
+
     const mobileBtn = toc.querySelector("button.mobile-toc");
     if (!mobileBtn) continue;
 
