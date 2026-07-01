@@ -81,7 +81,7 @@
       }
     },
     "components": {
-      "TableOfContents": {
+      "_TableOfContents": {
         "displayName": "Table of Content",
         "defaultPosition": "right",
         "defaultPriority": 50
