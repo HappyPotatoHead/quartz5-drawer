@@ -5,4 +5,4 @@ interface Options {
 }
 declare const _default: (userOpts?: Options) => QuartzComponent;
 
-export { _default as MobileTOC };
+export { type Options as O, _default as _TableOfContents };

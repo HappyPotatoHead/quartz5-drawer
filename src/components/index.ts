@@ -1,1 +1,1 @@
-export { default as MobileTOC } from "./_TableOfContents";
+export { default as _TableOfContents } from "./_TableOfContents";

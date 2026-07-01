@@ -331,6 +331,6 @@ var TableOfContents_default = ((userOpts) => {
   return TableOfContents;
 });
 
-export { TableOfContents_default as MobileTOC };
+export { TableOfContents_default as _TableOfContents };
 //# sourceMappingURL=index.js.map
 //# sourceMappingURL=index.js.map
