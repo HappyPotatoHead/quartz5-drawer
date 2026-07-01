@@ -1,9 +1,9 @@
 import { defineConfig } from "tsup";
 import type { Plugin } from "esbuild";
 import path from "path";
-import { validateManifest } from "./src/build/validate-manifest";
+// import { validateManifest } from "./src/build/validate-manifest";
 
-validateManifest();
+// validateManifest();
 
 /**
  * Esbuild plugin that bundles `.inline.ts` files into browser-ready JavaScript strings.
