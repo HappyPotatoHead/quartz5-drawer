@@ -7,7 +7,7 @@ i made this because toc doesn't exist in the mobile interface.
 ## Installation and Usgae
 
 - command
-    - `npx quartz plugin add github:HappyPotatoHead/drawer`
+  - `npx quartz plugin add github:HappyPotatoHead/drawer`
 - Go to `quartz.config.yaml`
 
 ```yaml
@@ -23,7 +23,7 @@ plugins:
 ```
 
 - updates:
-    - `npx quartz plugin install --latest github:HappyPotatoHead/drawer`
+  - `npx quartz plugin install --latest github:HappyPotatoHead/drawer`
 
 > [!WARNING]
 >
