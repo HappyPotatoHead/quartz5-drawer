@@ -2,7 +2,7 @@ i made this because toc doesn't exist in the mobile interface.
 
 ## Example Usage
 
-[Uploading Screencast_20260722_112941.webm…]()
+[Screencast_20260722_112941.webm](https://github.com/user-attachments/assets/5ee2cccc-4be1-459b-abf5-23435db61e2f)
 
 ## Installation and Usgae
 
